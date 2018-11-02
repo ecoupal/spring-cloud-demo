@@ -4,6 +4,8 @@ import com.demo.customers.entity.Customer;
 import com.demo.customers.service.CustomerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,7 +17,11 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/customers")
+@RefreshScope
 public class CustomerController {
+
+    @Value("${env.random:Hello world}")
+    private String random;
 
     private final CustomerService customerService;
 
@@ -33,6 +39,8 @@ public class CustomerController {
     @GetMapping("/{customerId}")
     public ResponseEntity<Customer> getCustomer(@PathVariable("customerId") String customerId) {
         log.info("Calling getCustomers...");
-        return ResponseEntity.ok(customerService.getCustomer(customerId));
+        final Customer customer = customerService.getCustomer(customerId);
+        customer.setRandom(random);
+        return ResponseEntity.ok(customer);
     }
 }

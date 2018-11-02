@@ -11,6 +11,7 @@ public class Customer {
 
     private final String id;
     private final String name;
+    private String random;
 
     private List<Order> orders;
 }
