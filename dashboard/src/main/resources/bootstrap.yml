@@ -1,0 +1,14 @@
+spring.application.name: dashboard
+server.port: 8788
+
+eureka:
+  instance.preferIpAddress: true
+  client:
+    serviceUrl.defaultZone: http://${EUREKA_SERVICE_URL:localhost}:8761/eureka/
+
+spring.cloud.config.uri: http://${CONFIG_SERVICE_URL:localhost}:8888
+
+turbine:
+  aggregator:
+    clusterConfig: customers,orders
+  appConfig: customers,orders
