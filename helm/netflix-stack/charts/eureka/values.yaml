@@ -1,0 +1,27 @@
+replicaCount: 1
+
+spring:
+  profile:
+    active: k8s
+  application:
+    name: eureka
+    version: 0.0.1
+
+configmap:
+  name: eureka-application-cm
+  volume: eureka-application-vol
+  deployment: /deployments/config
+
+eureka:
+  preferIpAddres: true
+
+config:
+  url: config-server
+
+docker:
+  image:
+    name: com.demo/eureka
+
+container:
+  http:
+    port: 8080

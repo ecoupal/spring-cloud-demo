@@ -1,0 +1,40 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: {{ .Values.spring.application.name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.spring.application.name }}
+        version: v1
+    spec:
+      containers:
+      - name: eureka
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: {{ .Values.spring.profile.active }}
+        - name: EUREKA_INSTANCE_PREFERIPADDRESS
+          value: {{ .Values.eureka.preferIpAddress }}
+        - name: CONFIG_SERVICE_URL
+          value: {{ .Values.config.url }}
+        - name: SPRING_CONFIG_LOCATION
+          value: file:/deployments/config/
+        image: {{ .Values.docker.image.name }}
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: {{ .Values.container.http.port }}
+        volumeMounts:
+        - mountPath: {{ .Values.configmap.deployment }}
+          name: {{ .Values.configmap.volume }}
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: {{ .Values.configmap.name }}
+        name: {{ .Values.configmap.volume }}

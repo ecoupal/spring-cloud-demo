@@ -1,0 +1,4 @@
+dependencies:
+  - name: eureka
+    version: 0.0.1
+    condition: eureka.enabled
