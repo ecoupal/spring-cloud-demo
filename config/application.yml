@@ -1,17 +1,1 @@
-security.user:
-  name: admin
-  password: admin
-
-management:
-  security.enabled: true
-  endpoints:
-    web:
-      exposure:
-        include: "*"
-  endpoint:
-    health:
-      show-details: ALWAYS
-
-spring.boot.admin.client.metadata.user:
-  name: ${security.user.name}
-  password: ${security.user.password}
+management.security.enabled: false
