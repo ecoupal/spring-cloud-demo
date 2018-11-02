@@ -1,4 +1,1 @@
-eureka:
-  instance.preferIpAddress: true
-  client:
-    serviceUrl.defaultZone: http://${EUREKA_SERVICE_URL:localhost}:8761/eureka/
+spring.boot.admin.routes.endpoints: env, metrics, trace, jolokia, info, configprops
