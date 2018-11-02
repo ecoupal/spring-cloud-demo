@@ -1,1 +1,6 @@
 management.security.enabled: false
+
+---
+spring:
+  profiles: k8s
+server.port: 8080
