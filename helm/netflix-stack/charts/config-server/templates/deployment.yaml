@@ -20,12 +20,10 @@ spec:
         env:
         - name: SPRING_PROFILES_ACTIVE
           value: {{ .Values.spring.profile.active }}
-        - name: EUREKA_INSTANCE_PREFERIPADDRESS
-          value: {{ .Values.eureka.preferIpAddress }}
-        - name: CONFIG_SERVICE_URL
-          value: {{ .Values.global.config.service.serviceUrl }}
         - name: SPRING_CONFIG_LOCATION
           value: file:/deployments/config/
+        - name: EUREKA_SERVICE_URL
+          value: {{ .Values.global.eureka.service.name }}
         image: {{ .Values.docker.image.name }}
         imagePullPolicy: IfNotPresent
         ports:

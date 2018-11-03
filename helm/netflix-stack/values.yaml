@@ -1,2 +1,12 @@
-eureka:
-  enabled: true
+global:
+  eureka:
+    service:
+      name: eureka
+      serviceUrl: http://eureka:8080/eureka/
+    enabled: true
+
+  config:
+    service:
+      name: config-server
+      serviceUrl: http://config-server:8080
+    enabled: true

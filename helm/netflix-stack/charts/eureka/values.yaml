@@ -10,13 +10,10 @@ spring:
 configmap:
   name: eureka-application-cm
   volume: eureka-application-vol
-  deployment: /deployments/config
+  deployment: /deployments/config/
 
 eureka:
   preferIpAddres: true
-
-config:
-  url: config-server
 
 docker:
   image:

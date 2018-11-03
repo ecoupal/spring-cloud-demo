@@ -6,3 +6,4 @@ metadata:
 data:
   application.yml: |-
     server.port: {{ .Values.container.http.port }}
+    spring.cloud.config.uri: {{ .Values.global.config.service.serviceUrl }}

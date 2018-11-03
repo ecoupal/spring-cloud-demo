@@ -13,7 +13,7 @@ services:
   config-server:
       image: com.demo/config-server
       environment:
-        - SPRING_PROFILES_ACTIVE=docker,native
+        - SPRING_PROFILES_ACTIVE=docker
         - EUREKA_SERVICE_URL=eureka
       ports:
         - 8888:8888
@@ -30,15 +30,15 @@ services:
     networks:
       - backend
 
-  dashboard:
-    image: com.demo/dashboard
-    environment:
-      - EUREKA_SERVICE_URL=eureka
-      - CONFIG_SERVICE_URL=config-server
-    ports:
-      - 8788:8788
-    networks:
-      - backend
+#  dashboard:
+#    image: com.demo/dashboard
+#    environment:
+#      - EUREKA_SERVICE_URL=eureka
+#      - CONFIG_SERVICE_URL=config-server
+#    ports:
+#      - 8788:8788
+#    networks:
+#      - backend
 
   customers:
     image: com.demo/customers
@@ -50,26 +50,26 @@ services:
     networks:
       - backend
 
-  orders:
-    image: com.demo/orders
-    environment:
-      - EUREKA_SERVICE_URL=eureka
-      - CONFIG_SERVICE_URL=config-server
-    ports:
-      - 8081:8081
-    networks:
-      - backend
+#  orders:
+#    image: com.demo/orders
+#    environment:
+#      - EUREKA_SERVICE_URL=eureka
+#      - CONFIG_SERVICE_URL=config-server
+#    ports:
+#      - 8081:8081
+#    networks:
+#      - backend
 
-  zipkin:
-    image: com.demo/zipkin
-    environment:
-      - EUREKA_SERVICE_URL=eureka
-      - CONFIG_SERVICE_URL=config-server
-      - STORAGE_TYPE=mem
-    ports:
-      - 9411:9411
-    networks:
-      - backend
+#  zipkin:
+#    image: com.demo/zipkin
+#    environment:
+#      - EUREKA_SERVICE_URL=eureka
+#      - CONFIG_SERVICE_URL=config-server
+#      - STORAGE_TYPE=mem
+#    ports:
+#      - 9411:9411
+#    networks:
+#      - backend
 
   zuul:
     image: com.demo/zuul

@@ -82,11 +82,11 @@
                 <version>1.2.0</version>
                 <configuration>
                     <env>
-                        <SPRING_PROFILES_ACTIVE>docker</SPRING_PROFILES_ACTIVE>
+                        <SPRING_CONFIG_LOCATION>/deployments/config/</SPRING_CONFIG_LOCATION>
                     </env>
                     <imageName>${project.groupId}/${project.artifactId}</imageName>
                     <baseImage>java:8</baseImage>
-                    <entryPoint>exec java $JAVA_OPTS -jar /${project.build.finalName}-exec.jar</entryPoint>
+                    <entryPoint>exec java $JAVA_OPTS -jar /${project.build.finalName}-exec.jar --spring.config.additional-location=$SPRING_CONFIG_LOCATION</entryPoint>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>

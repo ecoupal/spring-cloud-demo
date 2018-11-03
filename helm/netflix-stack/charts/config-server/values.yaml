@@ -1,0 +1,21 @@
+replicaCount: 1
+
+spring:
+  profile:
+    active: k8s
+  application:
+    name: config-server
+    version: 0.0.1
+
+configmap:
+  name: config-server-application-cm
+  volume: config-server-application-vol
+  deployment: /deployments/config
+
+docker:
+  image:
+    name: com.demo/config-server
+
+container:
+  http:
+    port: 8080

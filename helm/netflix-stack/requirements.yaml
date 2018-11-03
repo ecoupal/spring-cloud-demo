@@ -1,4 +1,7 @@
 dependencies:
   - name: eureka
     version: 0.0.1
-    condition: eureka.enabled
+    condition: global.eureka.enabled
+  - name: config-server
+    version: 0.0.1
+    condition: global.config.enabled
