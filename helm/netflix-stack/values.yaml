@@ -9,4 +9,7 @@ global:
     service:
       name: config-server
       serviceUrl: http://config-server:8080
-    enabled: true
+    enabled: false
+
+  admin:
+    enabled: false

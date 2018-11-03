@@ -7,8 +7,6 @@ metadata:
 spec:
   ports:
   - port: {{ .Values.container.http.port }}
-    protocol: TCP
-    targetPort: {{ .Values.container.http.port }}
     name: http
   selector:
     app: {{ .Values.spring.application.name }}

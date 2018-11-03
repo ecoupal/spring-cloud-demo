@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ .Values.spring.application.name }}-ingress
+  annotations:
+    kubernetes.io/ingress.class: webrelay
+spec:
+  rules:
+  - host: {{ .Values.spring.relay.tunnel.url }}
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: {{ .Values.spring.application.name }}
+          servicePort: {{ .Values.container.http.port }}

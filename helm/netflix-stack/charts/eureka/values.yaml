@@ -6,6 +6,9 @@ spring:
   application:
     name: eureka
     version: 0.0.1
+  relay:
+    tunnel:
+      url: ec1lmoe6ejnlb2smxo0tqp.webrelay.io
 
 configmap:
   name: eureka-application-cm
@@ -13,7 +16,7 @@ configmap:
   deployment: /deployments/config/
 
 eureka:
-  preferIpAddres: true
+  preferIpAddress: true
 
 docker:
   image:

@@ -5,3 +5,6 @@ dependencies:
   - name: config-server
     version: 0.0.1
     condition: global.config.enabled
+  - name: admin
+    version: 0.0.1
+    condition: global.admin.enabled
